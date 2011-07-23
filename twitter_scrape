@@ -3,11 +3,14 @@
 import twitter
 import twitter_api_credentials
 
-if twitter.__VERSION__ != 0.8:
+if not twitter.__version__ >= 0.8:
 	raise Exception("twitter api wrong version");
 
-api = twitter.Api( consumer_key = CONSUMER_KEY , consumer_secret = CONSUMER_SECRET, 
-										access_token_key = ACCESS_TOKEN_KEY, access_token_secret = ACCESS_TOKEN_SECRET)
+api = twitter.Api( 
+					consumer_key = twitter_api_credentials.CONSUMER_KEY , 
+					consumer_secret = twitter_api_credentials.CONSUMER_SECRET, 
+					access_token_key = twitter_api_credentials.ACCESS_TOKEN_KEY, 
+					access_token_secret = twitter_api_credentials.ACCESS_TOKEN_SECRET)
 
 # print api.VerifyCredentials()
 
