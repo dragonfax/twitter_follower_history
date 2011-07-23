@@ -10,5 +10,9 @@ ERROR_FILE="errors.txt"
 
 $SCRAPE_SCRIPT >$FOLLOWER_HISTORY_FILE 2>$ERROR_FILE
 
-git --git-dir=$FOLLOWER_HISTORY_DIR/.git --work-tree=$FOLLOWER_HISTORY_DIR commit -a -m 'auto-checkin of follower history' >/dev/null 2>>$ERROR_FILE
+GIT_BIN="git"
+GIT_CMD="$GIT_BIN --git-dir=$FOLLOWER_HISTORY_DIR/.git --work-tree=$FOLLOWER_HISTORY_DIR"
+
+$GIT_CMD commit -a -m 'auto-checkin of follower history' >/dev/null 2>>$ERROR_FILE
+$GIT_CMD push github master:master >/dev/null 2>>$ERROR_FILE
 
