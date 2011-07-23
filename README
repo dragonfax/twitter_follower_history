@@ -1,0 +1,12 @@
+A quick script to track my followers on twitter on a daily basis. 
+This is probably too rudimentary to be useful to anyone but myself.
+
+uses a git repo under the source directory to store the follower history.
+
+1. register as a developer with twitter
+2. get api credentials
+3. install twitter api for python
+	possibly from dev source, as it needs the cursor support for GetFollowers
+4. create the follow_history sub-repo to store the follower list.
+5. add cron_wrapper to crontab at desired interval
+
