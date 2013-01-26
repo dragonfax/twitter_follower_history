@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASE_DIR=`dirname $0`
-FOLLOWERS_CMD="twitter-follow dragonfax"
+FOLLOWERS_CMD="twitter-follow -i dragonfax"
 FOLLOWER_HISTORY_DIR="$BASE_DIR/../twitter_follower_history_data"
 FOLLOWER_HISTORY_FILE="$FOLLOWER_HISTORY_DIR/follwers.txt"
 
