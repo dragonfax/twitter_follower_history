@@ -6,7 +6,7 @@ FOLLOWER_HISTORY_DIR="$BASE_DIR/../twitter_follower_history_data"
 FOLLOWER_HISTORY_FILE="$FOLLOWER_HISTORY_DIR/follwers.txt"
 
 echo "pulling followers"
-$FOLLOWERS_CMD | sort >$FOLLOWER_HISTORY_FILE
+$FOLLOWERS_CMD | sort -n >$FOLLOWER_HISTORY_FILE
 
 GIT_CMD="git --git-dir=$FOLLOWER_HISTORY_DIR/.git --work-tree=$FOLLOWER_HISTORY_DIR"
 
