@@ -2,10 +2,15 @@ A quick script to track my followers on twitter on a daily basis.
 
 uses a git repo to store the follower history for versioning.
 
-uses the python based twitter api available at https://github.com/sixohsix/twitter
+uses the python based twitter api (version 1.10 at least) https://github.com/sixohsix/twitter
 
-simply
-1. use "easy_install twitter" to install the api.
-2. then run "twitter" once to setup oauth
+1. $ easy_install pip
+2. $ pip twitter
+3. $ twitter-follow -o <twitter-handle>
+	 This sets up your oauth token. 
+	 It will pass you to lynx to finish the oauth app authorization process.
+4. create a repo in the same parent directory as this one, to hold the followers.txt
+5. $ cron_wrapper
 
+I put the cron_wrapper in cron to run once a day, to keep the file updated and checked into github.
 
