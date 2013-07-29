@@ -1,18 +1,27 @@
 #!/bin/bash
 
 BASE_DIR=`dirname $0`
+HISTORY_DIR="${BASE_DIR}/../twitter_follower_history_data"
+
+# Followers
+echo "followers"
 FOLLOWERS_CMD="twitter-follow -o -i dragonfax"
-FOLLOWER_HISTORY_DIR="$BASE_DIR/../twitter_follower_history_data"
-FOLLOWER_HISTORY_FILE="$FOLLOWER_HISTORY_DIR/follwers.txt"
+FOLLOWER_HISTORY_FILE="${HISTORY_DIR}/follwers.txt"
+$FOLLOWERS_CMD | /usr/bin/sort -n >"${FOLLOWER_HISTORY_FILE}"
 
-echo "pulling followers"
-$FOLLOWERS_CMD | /usr/bin/sort -n >$FOLLOWER_HISTORY_FILE
 
-GIT_CMD="git --git-dir=$FOLLOWER_HISTORY_DIR/.git --work-tree=$FOLLOWER_HISTORY_DIR"
+# Following
+echo "following"
+FOLLOWING_CMD="twitter-follow -o -i -g dragonfax"
+FOLLOWING_HISTORY_FILE="${HISTORY_DIR}/following.txt"
+$FOLLOWING_CMD | /usr/bin/sort -n >"${FOLLOWING_HISTORY_FILE}"
 
+
+# Git Tracking
 echo "commiting new file version"
+GIT_CMD="git --git-dir=${HISTORY_DIR}/.git --work-tree=${HISTORY_DIR}"
 $GIT_CMD commit -a -m 'auto-checkin of follower history'
 
 echo "pushing to github"
-$GIT_CMD push origin master:master
+$GIT_CMD push
 
